@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Full Stack Roadmap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #0ea5e9;
+            --bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* Animated Background Gradients */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .slider {
+            display: flex;
+            width: 600vw;
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        section {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 50px;
+            width: 100%;
+            max-width: 1100px;
+            height: 80vh;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .item h3 {
+            margin-bottom: 8px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .nav-hints {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+
+        .step-indicator {
+            position: fixed;
+            top: 30px;
+            right: 50px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .diagram-placeholder {
+            margin-top: 20px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="step-indicator" id="stepCounter">01 / 06</div>
+
+    <div class="slider" id="mainSlider">
+        <section>
+            <div class="glass-card"
+                style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fas fa-code-branch" style="font-size: 5rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h1>Full Stack Engineering</h1>
+                <p style="font-size: 1.4rem; color: #94a3b8;">The modern architecture, methodology, and career roadmap.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card">
+                <h2><i class="fas fa-layer-group"></i> Modern Tech Stacks</h2>
+                <div class="grid">
+                    <div class="item">
+                        <h3>MERN Stack</h3>
+                        <p>The industry standard for JavaScript-heavy startups. High reactivity and performance.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Django + React</h3>
+                        <p>Perfect for data-intensive apps and rapid backend development with built-in security.</p>
+                    </div>
+                    <div class="item">
+                        <h3>.NET Ecosystem</h3>
+                        <p>Enterprise-grade scalability. High performance for banking and large corporations.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Next.js / Vercel</h3>
+                        <p>The 2026 standard for SEO-optimized, lightning-fast full stack applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card">
+                <h2><i class="fas fa-sync-alt"></i> SDLC & CI/CD Pipelines</h2>
+                <div class="grid">
+                    <div>
+                        <p style="margin-bottom: 15px; color: #cbd5e1;">The <b>SDLC</b> is the roadmap from a client's
+                            idea to a running application.</p>
+                        <div class="item">
+                            <p><b>CI (Integration):</b> Automatic code testing.</p>
+                            <p><b>CD (Deployment):</b> Automatic server updates.</p>
+                        </div>
+                    </div>
+                    <div class="diagram-placeholder">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card">
+                <h2><i class="fas fa-users-gear"></i> Modern Methodologies</h2>
+                <div class="grid">
+                    <div class="item">
+                        <h3>Agile (Scrum/Kanban)</h3>
+                        <p>Iterative delivery. Fast feedback loops. <b>Most Popular.</b></p>
+                    </div>
+                    <div class="item">
+                        <h3>Waterfall</h3>
+                        <p>Sequential phases. Best for small, fixed-scope projects.</p>
+                    </div>
+                </div>
+                <div class="diagram-placeholder" style="height: 200px;">
+
+
+                    [Image of Agile vs Waterfall comparison chart]
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card">
+                <h2><i class="fas fa-sitemap"></i> Monolith vs Microservices</h2>
+                <div class="grid">
+                    <div class="item">
+                        <h3>Monolithic</h3>
+                        <p>One unified codebase. Easier for small teams to manage and debug early on.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Microservices</h3>
+                        <p>Broken into independent APIs. Allows massive scaling and independent deployments.</p>
+                    </div>
+                </div>
+                <div class="item"
+                    style="margin-top: 20px; text-align: center; border: none; background: rgba(99,102,241,0.1);">
+                    <strong>Trend:</strong> Modular Monoliths (The Best of Both Worlds)
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card">
+                <h2><i class="fas fa-briefcase"></i> The Professional Path</h2>
+                <div class="grid">
+                    <div class="item">
+                        <h3>Cloud Architect</h3>
+                        <p>Managing AWS/Azure infra.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Product Engineer</h3>
+                        <p>Focusing on user-centric features.</p>
+                    </div>
+                    <div class="item">
+                        <h3>System Designer</h3>
+                        <p>Building high-level logic.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Technical Lead</h3>
+                        <p>Guiding teams and architecture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="nav-hints">
+        <span><i class="fas fa-arrow-left"></i> PREV</span>
+        <span>SPACEBAR / ARROWS</span>
+        <span>NEXT <i class="fas fa-arrow-right"></i></span>
+    </div>
+
+    <script>
+        let current = 0;
+        const total = 6;
+        const slider = document.getElementById('mainSlider');
+        const counter = document.getElementById('stepCounter');
+
+        function update() {
+            slider.style.transform = `translateX(-${current * 100}vw)`;
+            counter.innerText = `0${current + 1} / 0${total}`;
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.code === 'Space') {
+                if (current < total - 1) current++;
+                update();
+            }
+            if (e.key === 'ArrowLeft') {
+                if (current > 0) current--;
+                update();
+            }
+        });
+    </script>
+</body>
+
+</html>
