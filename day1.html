@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Web Architectures Presentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy-deep: #020c1b;
+            --navy-light: #0a192f;
+            --navy-blue: #112240;
+            --cyan: #64ffda;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+            --code-block: #011627;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: var(--navy-deep);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .slide-deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            padding: 50px;
+            background: var(--navy-light);
+            border-radius: 15px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: var(--cyan);
+            font-size: 3rem;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: var(--cyan);
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--navy-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-top: 25px;
+        }
+
+        p,
+        li {
+            color: var(--slate);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: var(--cyan);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .pro-tip {
+            background: rgba(100, 255, 218, 0.05);
+            border-left: 4px solid var(--cyan);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        code {
+            background: var(--navy-blue);
+            color: var(--cyan);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        pre {
+            background: var(--code-block);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #1d2d50;
+            color: #d6deeb;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+
+        /* Controls */
+        .nav-bar {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+        }
+
+        .counter {
+            color: var(--slate);
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slide-deck">
+
+        <div class="slide active">
+            <h1 style="text-align:center; margin-top: 10vh;">The Full-Stack Front-End</h1>
+            <p style="text-align:center; font-size: 1.4rem;">Evolution from Static HTML to Modular SCSS Systems</p>
+            <div style="text-align:center; margin-top: 50px;">
+                <i class="fab fa-html5 fa-3x" style="margin: 0 20px;"></i>
+                <i class="fab fa-css3-alt fa-3x" style="margin: 0 20px;"></i>
+                <i class="fab fa-sass fa-3x" style="margin: 0 20px;"></i>
+                <i class="fab fa-bootstrap fa-3x" style="margin: 0 20px;"></i>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>01. HTML5: The Living Standard</h2>
+            <p>HTML is the <strong>Structure</strong>. It tells the browser what is a heading, a
+                paragraph, or a button.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li><strong>Elements:</strong> Tags like <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code>.
+                        </li>
+                        <li><strong>Attributes:</strong> <code>src, href, alt, id, class</code>.</li>
+                        <li><strong>Nesting:</strong> Parent and child relationships.</li>
+                    </ul>
+                </div>
+                <pre>
+&lt;body&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;p&gt;This is structure.&lt;/p&gt;
+&lt;/body&gt;</pre>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>HTML5: Semantic SEO </h2>
+            <p>Experienced devs don't use <code>&lt;div&gt;</code> for everything. They use <strong>Semantic
+                    Tags</strong>.</p>
+            <div class="pro-tip">
+                <strong>Pro Tip:</strong> Using <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and
+                <code>&lt;article&gt;</code> improves SEO and helps screen readers (Accessibility) navigate your site.
+            </div>
+            <pre>
+&lt;!-- SEO Friendly Structure --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;main role="main"&gt;
+  &lt;section id="hero"&gt;...&lt;/section&gt;
+  &lt;aside&gt;Sidebar Info&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</pre>
+        </div>
+
+        <div class="slide">
+            <h2>02. CSS3: The Art of Styling</h2>
+            <p>CSS turns raw HTML into a visual experience. It controls color, spacing, and typography.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>The Box Model</h3>
+                    <p>Every element is a box. Understanding <strong>Margin, Border, Padding, and Content</strong> is
+                        vital for any developer.</p>
+                </div>
+                <pre>
+.box {
+  width: 300px;
+  padding: 20px; /* Inside space */
+  border: 1px solid cyan;
+  margin: 10px;  /* Outside space */
+}</pre>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Mastering Flexbox</h2>
+            <p>Flexbox is a 1D layout tool (Rows OR Columns). It solves the "centering" problem.</p>
+            <pre>
+.parent {
+  display: flex;
+  justify-content: space-between; /* Horizontal */
+  align-items: center; /* Vertical */
+  flex-wrap: wrap; /* Multi-line support */
+}
+.child { flex: 1; /* Grow to fill space */ }</pre>
+            <div class="pro-tip">
+                <strong>Exp. Note:</strong> Use <code>gap: 20px;</code> on the parent instead of <code>margin</code> on
+                children for cleaner spacing.
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>CSS Variables & Maintainability</h2>
+            <p>For large projects, hardcoding colors is a disaster. Use <strong>Custom Properties</strong>.</p>
+            <pre>
+:root {
+  --primary-color: #64ffda;
+}
+
+.button {
+  background-color: var(--primary-color);
+  transition: filter 0.3s ease;
+}
+.button:hover { filter: brightness(1.2); }</pre>
+        </div>
+
+        <div class="slide">
+            <h2>EM vs. REM: Relative Typography</h2>
+            <p>Moving away from fixed <code>px</code> allows your layout to be accessible and scale based on user
+                settings.</p>
+
+            <div class="grid-2">
+                <div>
+                    <h3>1. REM (Root EM)</h3>
+                    <p>Relative to the <strong>Root</strong> (<code>&lt;html&gt;</code>) element. Usually 1rem = 16px.
+                    </p>
+                    <pre>
+html { font-size: 16px; }
+
+.box {
+  padding: 2rem; /* Always 32px */
+  font-size: 1.5rem; /* Always 24px */
+}</pre>
+                    <div class="pro-tip" style="margin-top:10px;">
+                        <strong>Best for:</strong> Global spacing, margins, and consistent font sizes.
+                    </div>
+                </div>
+
+                <div>
+                    <h3>2. EM</h3>
+                    <p>Relative to the <strong>Parent's</strong> font size. It compounds if nested.</p>
+                    <pre>
+.parent { font-size: 20px; }
+
+.child {
+  font-size: 2em; /* 40px */
+  padding: 1em;   /* 40px (relative to 40px) */
+}</pre>
+                    <div class="pro-tip" style="margin-top:10px;">
+                        <strong>Best for:</strong> Component-specific scaling (e.g., icons inside buttons).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>SCSS: Nesting & Variables</h2>
+            <p>SCSS makes your stylesheets readable by mirroring your HTML structure and centralizing values.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>Nesting & Parent Selectors</h3>
+                    <p>Use <code>&</code> to reference the parent element for pseudo-classes like hover.</p>
+                </div>
+                <pre>
+$primary: #64ffda;
+$radius: 12px;
+
+.nav-card {
+  background: #112240;
+  border-radius: $radius;
+  
+  h2 { font-size: 1.5rem; } // Nested child
+  
+  &:hover { 
+    border-color: $primary; 
+  }
+}</pre>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>SCSS: Functions & Logic</h2>
+            <p>Functions allow you to perform calculations and return values, keeping your CSS dynamic.</p>
+            <div class="grid-2">
+                <pre>
+// Define a function for PX to REM
+@function toRem($px) {
+  @return ($px / 16) * 1rem;
+}
+
+.hero-title {
+  font-size: toRem(64); // Becomes 4rem
+  width: 100% / 3;      // Math operations
+}
+
+.card {
+  // Use built-in color functions
+  color: lighten($primary, 20%);
+}</pre>
+                <div>
+                    <h3>Why use Functions?</h3>
+                    <ul>
+                        <li><strong>Consistency:</strong> Convert units automatically.</li>
+                        <li><strong>Math:</strong> Handle grid widths without a calculator.</li>
+                        <li><strong>Color Manipulation:</strong> Create hover states automatically with
+                            <code>darken()</code> or <code>opacify()</code>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Professional SCSS Architecture</h2>
+            <p>The <strong>7-1 Pattern</strong>: 7 folders, 1 main file. It ensures your project stays organized as it
+                grows.</p>
+            <div class="grid-2">
+                <ul>
+                    <li><strong>abstracts/</strong>: Variables, mixins, and functions.</li>
+                    <li><strong>base/</strong>: typography, and resets.</li>
+                    <li><strong>components/</strong>: One file per UI piece (button.scss, card.scss).</li>
+                    <li><strong>layout/</strong>: Global structural pieces (header, footer, grid).</li>
+                </ul>
+                <pre>
+// main.scss - The orchestrator
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'base/reset';
+@import 'components/navbar';
+@import 'components/footer';
+
+// Browser only sees the compiled main.css!</pre>
+            </div>
+
+        </div>
+
+        <div class="slide">
+            <h2>04. Bootstrap 5: The UI Toolkit</h2>
+            <p>Bootstrap is a framework that provides <strong>pre-built components</strong> and a <strong>responsive
+                    grid</strong>.</p>
+            <div class="pro-tip">
+                <strong>Key Update:</strong> Bootstrap 5 no longer requires jQuery! It is much lighter and uses Vanilla
+                JS.
+            </div>
+            <p>It includes: Modals, Navbars, Tooltips, Buttons, and Carousels.</p>
+        </div>
+
+        <div class="slide">
+            <h2>The 12-Column Grid System</h2>
+            <p>Bootstrap divides the screen into 12 parts. You decide how many parts each element takes at different
+                screen sizes.</p>
+            <pre>
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-8"&gt;Main (Full on mobile, 8/12 on Desktop)&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Sidebar (Full on mobile, 4/12 on Desktop)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+
+        <div class="slide">
+            <h2>Bootstrap: Utility-First Thinking</h2>
+            <p>Modern Bootstrap encourages using "Utilities" instead of writing new CSS for small changes.</p>
+            <ul>
+                <li><code>d-flex justify-content-center</code> (Flexbox layout)</li>
+                <li><code>mt-5 mb-2</code> (Margin Top/Bottom)</li>
+                <li><code>text-uppercase fw-bold</code> (Font styling)</li>
+                <li><code>rounded-pill shadow-lg</code> (Decoration)</li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="slide">
+            <h1 style="color: var(--cyan);">Mastery Checklist</h1>
+            <div class="grid-2">
+                <ul>
+                    <li>[ ] Semantic HTML for SEO</li>
+                    <li>[ ] Responsive Flex/Grid Layouts</li>
+                    <li>[ ] Modular SCSS Components</li>
+                    <li>[ ] Bootstrap for Rapid Prototyping</li>
+                </ul>
+                <div class="pro-tip">
+                    "The best code is not the cleverest, but the most maintainable."
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 50px;">Thank you for your attention!</p>
+        </div>
+
+        <div class="nav-bar">
+            <button class="btn" onclick="changeSlide(-1)">Previous</button>
+            <span class="counter"><span id="currentIdx">1</span> / 15</span>
+            <button class="btn" onclick="changeSlide(1)">Next</button>
+        </div>
+
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('currentIdx');
+
+        function changeSlide(dir) {
+            slides[current].classList.remove('active');
+            current += dir;
+            if (current >= slides.length) current = 0;
+            if (current < 0) current = slides.length - 1;
+            slides[current].classList.add('active');
+            counter.innerText = current + 1;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") changeSlide(1);
+            if (e.key === "ArrowLeft") changeSlide(-1);
+        });
+    </script>
+
+</body>
+
+</html>
