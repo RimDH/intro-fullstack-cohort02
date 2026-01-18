@@ -313,7 +313,56 @@ html { font-size: 16px; }
                 </div>
             </div>
         </div>
+        <div class="slide">
+            <h2>Responsive Design: Media Queries</h2>
+            <p>Design for <strong>Mobile First</strong>. Use Media Queries to "interrupt" the layout as the screen
+                grows.</p>
 
+            <div class="grid-2">
+                <div>
+                    <h3>The Mobile-First Approach</h3>
+                    <p>Write your base CSS for small screens, then add complexity for Desktop using
+                        <code>min-width</code>.
+                    </p>
+                    <pre>
+/* Base: Mobile (1 Column) */
+.container { display: block; }
+
+/* Desktop: 768px and up */
+@media (min-width: 768px) {
+  .container { 
+    display: flex; 
+    gap: 20px;
+  }
+}</pre>
+                </div>
+
+                <div
+                    style="background: var(--navy-blue); padding: 20px; border-radius: 10px; border: 1px dashed var(--cyan);">
+                    <h3 style="margin-top:0; font-size: 1rem; color: var(--slate);">Visual Logic</h3>
+
+                    <div
+                        style="border: 2px solid #333; width: 120px; margin: 10px auto; padding: 5px; border-radius: 5px;">
+                        <p style="font-size: 10px; margin: 2px;">Mobile</p>
+                        <div style="background: var(--cyan); height: 15px; margin-bottom: 5px;"></div>
+                        <div style="background: var(--cyan); height: 15px;"></div>
+                    </div>
+
+                    <div style="text-align: center; color: var(--cyan);"><i class="fas fa-arrow-down"></i></div>
+
+                    <div
+                        style="border: 2px solid #333; width: 220px; margin: 10px auto; padding: 5px; border-radius: 5px;">
+                        <p style="font-size: 10px; margin: 2px;">Desktop</p>
+                        <div style="display: flex; gap: 5px;">
+                            <div style="background: var(--cyan); height: 30px; flex: 1;"></div>
+                            <div style="background: var(--cyan); height: 30px; flex: 1;"></div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--slate); margin-top: 10px;">The <strong>Breakpoint</strong>
+                        triggers the transition.</p>
+                </div>
+            </div>
+        </div>
         <div class="slide">
             <h2>SCSS: Nesting & Variables</h2>
             <p>SCSS makes your stylesheets readable by mirroring your HTML structure and centralizing values.</p>
