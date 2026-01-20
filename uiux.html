@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI/UX Masterclass: The 50/50 Series</title>
+    <title>UI/UX Principles for Web Developers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #050810;
@@ -14,253 +16,438 @@
             --text-primary: #e6f1ff;
             --text-secondary: #8892b0;
             --card-inner: #112240;
+            --danger: #ff5f56;
+            --success: #64ffda;
         }
 
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Inter', sans-serif; background: var(--bg-deep); color: var(--text-primary); overflow: hidden; }
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            overflow: hidden;
+        }
 
-        .presentation { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .presentation {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         .slide {
             display: none;
-            width: 90%;
-            max-width: 1100px;
-            height: 75vh;
+            width: 95%;
+            max-width: 1200px;
+            height: 85vh;
             background: var(--bg-slide);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(100, 255, 218, 0.1);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
         }
 
-        .slide.active { display: grid; grid-template-columns: 1fr 1fr; animation: fadeIn 0.4s ease-out; }
+        .slide.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            animation: slideIn 0.4s ease-out;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
 
-        .slide-text { padding: 40px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255,255,255,0.05); }
-        .slide-visual { padding: 40px; background: var(--card-inner); display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; text-align: center; }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-        h2 { color: var(--accent-ui); font-size: 1.8rem; margin: 0 0 15px 0; }
-        h3 { color: var(--accent-ux); font-size: 1.1rem; margin: 15px 0 5px 0; }
-        p, li { color: var(--text-secondary); line-height: 1.5; font-size: 0.95rem; }
-        ul { padding-left: 18px; margin: 10px 0; }
+        .slide-text {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-        .mock-ui { background: var(--bg-slide); padding: 15px; border-radius: 8px; border: 1px solid rgba(100,255,218,0.2); width: 80%; }
-        .nav { position: absolute; bottom: 30px; display: flex; gap: 20px; align-items: center; z-index: 10; }
-        .btn { background: transparent; border: 1px solid var(--accent-ui); color: var(--accent-ui); padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .btn:hover { background: var(--accent-ui); color: var(--bg-deep); }
+        .slide-visual {
+            padding: 40px;
+            background: var(--card-inner);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            color: var(--accent-ui);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            color: var(--accent-ux);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .principle-icon {
+            font-size: 5rem;
+            color: var(--accent-ui);
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+        }
+
+        /* Visual Comp Styles */
+        .visual-comp-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ui-mockup {
+            padding: 25px;
+            border-radius: 12px;
+            position: relative;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .ui-mockup.bad-ui {
+            border-color: var(--danger);
+        }
+
+        .ui-mockup.good-ui {
+            border-color: var(--accent-ui);
+        }
+
+        .tag {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            padding: 2px 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            border-radius: 4px;
+            color: #000;
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--accent-ui);
+            color: var(--accent-ui);
+            padding: 10px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-ui);
+            color: var(--bg-deep);
+        }
+
+        .reveal-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(189, 147, 249, 0.1);
+            border-radius: 8px;
+            display: none;
+            border-left: 4px solid var(--accent-ux);
+        }
+
+        .reveal-trigger {
+            cursor: pointer;
+            color: var(--accent-ux);
+            text-decoration: underline;
+            font-weight: bold;
+            background: none;
+            border: none;
+            padding: 0;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="presentation">
+    <div class="presentation">
 
-    <div class="slide active">
-        <div class="slide-text">
-            <h2>The UI/UX Architecture</h2>
-            <p>A 15-step deep dive into creating products that are both beautiful and functional.</p>
-        </div>
-        <div class="slide-visual">
-            <i class="fas fa-layer-group fa-5x" style="color: var(--accent-ui);"></i>
-            <p style="margin-top: 20px; color: var(--accent-ui);">Interface + Logic</p>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>01. Visual Hierarchy</h2>
-            <p>Using size, weight, and color to guide the user's eye to the most important task.</p>
-            <ul><li>Scale: Big = First</li><li>Color: Bright = Action</li></ul>
-        </div>
-        <div class="slide-visual">
-            <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-ui);">Headline</div>
-            <div style="font-size: 1rem; opacity: 0.6; margin: 10px 0;">Supporting subtext</div>
-            <button style="background: var(--accent-ux); border:none; padding: 10px 20px; border-radius: 5px; color:white;">Action</button>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>02. Color Theory</h2>
-            <p>The 60-30-10 Rule ensures balance. Colors evoke specific emotional responses.</p>
-            <ul><li>Blue: Trust</li><li>Red: Error/Urgency</li></ul>
-        </div>
-        <div class="slide-visual">
-            <div style="display:flex; gap:10px;">
-                <div style="width:60px; height:60px; background:#0a192f; border:1px solid white;">60%</div>
-                <div style="width:60px; height:60px; background:#112240; border:1px solid white;">30%</div>
-                <div style="width:60px; height:60px; background:#64ffda; color:#000;">10%</div>
+        <div class="slide active">
+            <div class="slide-text">
+                <h2>UI/UX Core Principles</h2>
+                <h3>The Foundation of Product Design</h3>
+                <p>UI is the <b>Touchpoint</b> (what you see).<br>UX is the <b>Journey</b> (how you feel).<br><br>Let's
+                    dive into the 4 main principles that every developer must master.</p>
+            </div>
+            <div class="slide-visual">
+                <i class="fas fa-cubes principle-icon"></i>
+                <div class="mt-4 text-center">
+                    <span class="badge rounded-pill bg-dark border border-info px-3">Visuals</span>
+                    <span class="badge rounded-pill bg-dark border border-info px-3">Logic</span>
+                    <span class="badge rounded-pill bg-dark border border-info px-3">Empathy</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="slide-text">
-            <h2>03. Typography</h2>
-            <p>Stick to 2 typefaces. Line spacing (leading) should be ~1.5x font size for readability.</p>
-        </div>
-        <div class="slide-visual">
-            <p style="font-family:serif; font-size: 1.2rem;">The Serif (Headings)</p>
-            <p style="font-family:sans-serif; font-size: 1rem; color: var(--accent-ui);">The Sans (Body/UI)</p>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>04. Whitespace</h2>
-            <p>Negative space reduces cognitive load. It makes the UI feel "premium" and breathable.</p>
-        </div>
-        <div class="slide-visual">
-            <div style="padding: 40px; border: 1px dashed var(--accent-ui);">
-                Focus Center
+        <div class="slide">
+            <div class="slide-text">
+                <h2>1. Visual Hierarchy</h2>
+                <h3>Directing the Eye</h3>
+                <p>Users don't read; they <b>scan</b>. Visual hierarchy uses size, color, and whitespace to tell the
+                    user what to look at first.</p>
+                <ul class="text-secondary small mt-3">
+                    <li><b>Scale:</b> Bigger elements = Higher priority.</li>
+                    <li><b>Color:</b> High contrast = Call to Action.</li>
+                    <li><b>Proximity:</b> Related items should be grouped.</li>
+                </ul>
+            </div>
+            <div class="slide-visual">
+                <i class="fas fa-eye principle-icon"></i>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="slide-text">
-            <h2>05. Interaction States</h2>
-            <p>Users need feedback. Buttons must show Hover, Active, and Disabled states.</p>
-        </div>
-        <div class="slide-visual">
-            <button class="btn" style="width: 150px; margin: 5px;">Normal</button>
-            <button class="btn" style="width: 150px; margin: 5px; background: var(--accent-ui); color: black;">Hover/Active</button>
-            <button class="btn" style="width: 150px; margin: 5px; opacity: 0.3; cursor: not-allowed;">Disabled</button>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>06. Accessibility (A11Y)</h2>
-            <p>Designing for inclusivity. Don't rely on color alone; use icons and labels.</p>
-        </div>
-        <div class="slide-visual">
-            <div style="color: #ff5f56; font-weight: bold;">
-                <i class="fas fa-exclamation-circle"></i> Error Detected
+        <div class="slide">
+            <div class="slide-text">
+                <h2>2. Accessibility</h2>
+                <h3>Inclusive Development</h3>
+                <p>Web design is for everyone, including users with visual impairments, motor difficulties, or
+                    situational limitations.</p>
+                <ul class="text-secondary small mt-3">
+                    <li><b>Contrast:</b> Maintain a 4.5:1 ratio for text.</li>
+                    <li><b>Semantic HTML:</b> Use <code>&lt;button&gt;</code>, not <code>&lt;div onclick&gt;</code>.
+                    </li>
+                    <li><b>Multi-Modal:</b> Don't use color alone to signal errors.</li>
+                </ul>
+            </div>
+            <div class="slide-visual">
+                <i class="fas fa-universal-access principle-icon"></i>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="slide-text">
-            <h2>07. User Research</h2>
-            <p>Validation over assumptions. Use A/B testing and Heatmaps to find friction points.</p>
-        </div>
-        <div class="slide-visual">
-            <div style="display:flex; gap:20px;">
-                <div style="padding:10px; border:1px solid var(--accent-ui);">Version A</div>
-                <div style="padding:10px; border:1px solid var(--accent-ux);">Version B</div>
+        <div class="slide">
+            <div class="slide-text">
+                <h2>3. Mental Models</h2>
+                <h3>Jakob's Law</h3>
+                <p>Users spend most of their time on <b>other sites</b>. This means they expect your site to work like
+                    the ones they already know.</p>
+                <ul class="text-secondary small mt-3">
+                    <li><b>Familiarity:</b> Keep search bars and logos in standard spots.</li>
+                    <li><b>Consistency:</b> Buttons should look like buttons globally.</li>
+                    <li><b>Patterns:</b> Use standard icons (Cart, Heart, User).</li>
+                </ul>
+            </div>
+            <div class="slide-visual">
+                <i class="fas fa-brain principle-icon"></i>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="slide-text">
-            <h2>08. User Personas</h2>
-            <p>Fictional characters based on research. Helps the team stay empathetic to the end user.</p>
-        </div>
-        <div class="slide-visual">
-            <i class="fas fa-user-circle fa-4x"></i>
-            <p style="margin-top:10px;">"Sarah, 28, Remote Lead"</p>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>09. Information Architecture</h2>
-            <p>The skeleton of the site. Mapping out content so the "Three Click Rule" is maintained.</p>
-        </div>
-        <div class="slide-visual">
-            <i class="fas fa-sitemap fa-4x"></i>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>10. Wireframing</h2>
-            <p>Low-fidelity blueprints. Focus on placement and logic, not visual style.</p>
-        </div>
-        <div class="slide-visual">
-            <div style="width:80%; height:100px; border:2px solid gray; background:transparent;"></div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>11. Jakob's Law</h2>
-            <p>Users spend most of their time on other sites. Keep your patterns familiar.</p>
-        </div>
-        <div class="slide-visual">
-            <i class="fas fa-shopping-cart fa-3x"></i>
-            <p>Standard Icons = Less Stress</p>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>12. Microcopy</h2>
-            <p>Writing small but powerful text. "Get Started" is better than "Submit."</p>
-        </div>
-        <div class="slide-visual">
-            <div class="mock-ui">Welcome back, Alex!</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>13. Mobile First</h2>
-            <p>Design for the smallest screen first to ensure essential content is prioritized.</p>
-        </div>
-        <div class="slide-visual">
-            <i class="fas fa-mobile-alt fa-4x"></i>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-text">
-            <h2>14. Design Systems</h2>
-            <p>A library of reusable components ensuring consistency across the whole product.</p>
-        </div>
-        <div class="slide-visual">
-            <div style="display:flex; flex-direction:column; gap:5px;">
-                <div class="mock-ui" style="width:100px;">Button</div>
-                <div class="mock-ui" style="width:100px;">Input</div>
+        <div class="slide">
+            <div class="slide-text">
+                <h2>4. Feedback</h2>
+                <h3>Interaction States</h3>
+                <p>Every action needs a reaction. If a user clicks, the system must acknowledge it immediately to reduce
+                    uncertainty.</p>
+                <ul class="text-secondary small mt-3">
+                    <li><b>Hover/Active:</b> Change colors on mouse-over.</li>
+                    <li><b>Loading:</b> Use skeletons or spinners for data fetching.</li>
+                    <li><b>Success:</b> Clear confirmation of completed tasks.</li>
+                </ul>
+            </div>
+            <div class="slide-visual">
+                <i class="fas fa-mouse-pointer principle-icon"></i>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="slide-text">
-            <h2>15. Conclusion</h2>
-            <p>Great design is invisible. It simply solves the user's problem with zero friction.</p>
+        <div class="slide">
+            <div class="slide-text">
+                <h2>Exercise 01: Buttons</h2>
+                <p>Which design is better for a high-traffic "Submit" form?</p>
+                <button class="reveal-trigger" onclick="toggleReveal(this)">Reveal Technical Logic</button>
+                <div class="reveal-box">
+                    <strong>Answer: Design B.</strong> By using an <i>Outline</i> style for the secondary action, we
+                    create a visual "Primary Action." In Design A, the user has to read both buttons carefully to
+                    distinguish them.
+                </div>
+            </div>
+            <div class="slide-visual">
+                <div class="visual-comp-wrapper">
+                    <div class="ui-mockup bad-ui">
+                        <span class="tag" style="background:var(--danger)">DESIGN A</span>
+                        <button class="btn btn-primary">Save Changes</button>
+                        <button class="btn btn-danger">Delete All</button>
+                    </div>
+                    <div class="ui-mockup good-ui">
+                        <span class="tag" style="background:var(--success)">DESIGN B</span>
+                        <button class="btn btn-primary px-4">Save Changes</button>
+                        <button class="btn btn-outline-secondary ms-2">Cancel</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="slide-visual">
-            <i class="fas fa-flag-checkered fa-4x" style="color: var(--accent-ui);"></i>
+
+        <div class="slide">
+            <div class="slide-text">
+                <h2>Exercise 02: Forms</h2>
+                <p>Which design helps a user who is multitasking?</p>
+                <button class="reveal-trigger" onclick="toggleReveal(this)">Reveal Technical Logic</button>
+                <div class="reveal-box">
+                    <strong>Answer: Design B.</strong> Placeholders disappear. Labels stay. For long forms, Design B
+                    ensures the user doesn't lose track of what field they are currently editing.
+                </div>
+            </div>
+            <div class="slide-visual">
+                <div class="visual-comp-wrapper">
+                    <div class="ui-mockup bad-ui">
+                        <span class="tag" style="background:var(--danger)">DESIGN A</span>
+                        <input type="text" class="form-control" placeholder="Account Number">
+                    </div>
+                    <div class="ui-mockup good-ui">
+                        <span class="tag" style="background:var(--success)">DESIGN B</span>
+                        <label class="small text-info mb-1">Account Number</label>
+                        <input type="text" class="form-control border-info" value="5520-XXXX">
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="slide">
+            <div class="slide-text">
+                <h2>Exercise 03: Search</h2>
+                <p>Which design reduces the time-to-task for a user?</p>
+                <button class="reveal-trigger" onclick="toggleReveal(this)">Reveal Technical Logic</button>
+                <div class="reveal-box">
+                    <strong>Answer: Design B.</strong> Visible search bars reduce "Interaction Cost." Users don't have
+                    to click just to see if they can search.
+                </div>
+            </div>
+            <div class="slide-visual">
+                <div class="visual-comp-wrapper">
+                    <div class="ui-mockup bad-ui d-flex justify-content-end">
+                        <span class="tag" style="background:var(--danger)">DESIGN A</span>
+                        <i class="fas fa-search p-2 border rounded"></i>
+                    </div>
+                    <div class="ui-mockup good-ui">
+                        <span class="tag" style="background:var(--success)">DESIGN B</span>
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-dark text-white border-secondary"
+                                placeholder="Search...">
+                            <button class="btn btn-info"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-text">
+                <h2>Exercise 04: Errors</h2>
+                <p>Which feedback is best for a colorblind user?</p>
+                <button class="reveal-trigger" onclick="toggleReveal(this)">Reveal Technical Logic</button>
+                <div class="reveal-box">
+                    <strong>Answer: Design B.</strong> By adding an icon and a text label, we ensure that users who
+                    cannot distinguish red from green still understand that an error has occurred.
+                </div>
+            </div>
+            <div class="slide-visual">
+                <div class="visual-comp-wrapper">
+                    <div class="ui-mockup bad-ui">
+                        <span class="tag" style="background:var(--danger)">DESIGN A</span>
+                        <input type="text" class="form-control border-danger" value="Short">
+                    </div>
+                    <div class="ui-mockup good-ui">
+                        <span class="tag" style="background:var(--success)">DESIGN B</span>
+                        <input type="text" class="form-control border-danger mb-2" value="Short">
+                        <div class="text-danger small"><i class="fas fa-times-circle"></i> Minimum 8 chars</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-text">
+                <h2>Exercise 05: Reading</h2>
+                <p>Which alignment is better for reading speed?</p>
+                <button class="reveal-trigger" onclick="toggleReveal(this)">Reveal Technical Logic</button>
+                <div class="reveal-box">
+                    <strong>Answer: Design B.</strong> Left alignment provides a hard "edge" for the eye. In Design A,
+                    the eye has to hunt for the start of every new line, which increases fatigue.
+                </div>
+            </div>
+            <div class="slide-visual">
+                <div class="visual-comp-wrapper">
+                    <div class="ui-mockup bad-ui text-center">
+                        <span class="tag" style="background:var(--danger)">DESIGN A</span>
+                        <p class="small">Center alignment makes for a very jagged edge on the left, which makes reading
+                            much harder.</p>
+                    </div>
+                    <div class="ui-mockup good-ui text-start">
+                        <span class="tag" style="background:var(--success)">DESIGN B</span>
+                        <p class="small">Left alignment is the standard for a reason. It is easier to scan and read long
+                            sentences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn" onclick="move(-1)">Prev</button>
+            <button class="nav-btn" onclick="move(1)">Next</button>
+        </div>
+
     </div>
 
-    <div class="nav">
-        <button class="btn" onclick="move(-1)">Back</button>
-        <span id="pg">1</span> / 16
-        <button class="btn" onclick="move(1)">Next</button>
-    </div>
+    <script>
+        let cur = 0;
+        const slides = document.querySelectorAll('.slide');
 
-</div>
+        function move(d) {
+            document.querySelectorAll('.reveal-box').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.reveal-trigger').forEach(el => el.innerText = 'Reveal Technical Logic');
 
-<script>
-    let cur = 0;
-    const slides = document.querySelectorAll('.slide');
-    const pg = document.getElementById('pg');
-    function move(d) {
-        slides[cur].classList.remove('active');
-        cur = (cur + d + slides.length) % slides.length;
-        slides[cur].classList.add('active');
-        pg.innerText = cur + 1;
-    }
-    document.addEventListener('keydown', (e) => {
-        if(e.key === "ArrowRight") move(1);
-        if(e.key === "ArrowLeft") move(-1);
-    });
-</script>
+            slides[cur].classList.remove('active');
+            cur = (cur + d + slides.length) % slides.length;
+            slides[cur].classList.add('active');
+        }
+
+        function toggleReveal(btn) {
+            const box = btn.nextElementSibling;
+            const isOpen = box.style.display === 'block';
+            box.style.display = isOpen ? 'none' : 'block';
+            btn.innerText = isOpen ? 'Reveal Technical Logic' : 'Hide Explanation';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") move(1);
+            if (e.key === "ArrowLeft") move(-1);
+        });
+    </script>
 
 </body>
+
 </html>
